@@ -9,9 +9,10 @@ public class SecondTask {
     public SecondTask() {
         queue = new LinkedBlockingQueue<>();
     }
-
-    static BlockingQueue<String> queue;
+//Зараз оголошую чергу тут \/ а створюю в конструкторі /\.
+     public static BlockingQueue<String> queue;
     public void fizzBuzzIt(int n) throws InterruptedException {
+
         FizzCheker fizzCheker = new FizzCheker();
         BuzzCheker buzzCheker = new BuzzCheker();
         FizzBuzzCheker fizzBuzzCheker = new FizzBuzzCheker();
@@ -24,7 +25,7 @@ public class SecondTask {
         executor.execute(numberCheker);
         executor.execute(myConsumerD);
 
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 1; i <= n; i++) {
             fizzCheker.setN(i);
             buzzCheker.setN(i);
             fizzBuzzCheker.setN(i);
