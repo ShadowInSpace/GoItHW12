@@ -34,7 +34,13 @@ public class SecondTask {
                 Thread.sleep(10);
             }
         }
-
+        Thread.sleep(10);
+        fizzCheker.finish();
+        buzzCheker.finish();
+        fizzBuzzCheker.finish();
+        numberCheker.finish();
+        myConsumerD.finish();
+        executor.shutdown();
 
 
 

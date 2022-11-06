@@ -6,6 +6,11 @@ public class FizzBuzzCheker implements Runnable, FizzBuzzChek {
     int n;
     boolean updated = false;
     public BlockingQueue<String> lQueue;
+    private boolean repeet = true;
+
+    public void finish(){
+        repeet = false;
+    }
 
     public FizzBuzzCheker(BlockingQueue<String> lQueue) {
         this.lQueue = lQueue;
@@ -13,7 +18,7 @@ public class FizzBuzzCheker implements Runnable, FizzBuzzChek {
 
     @Override
     public void run() {
-        while (true) {
+        while (repeet) {
             try {
                 if (updated) {
                     updated = false;

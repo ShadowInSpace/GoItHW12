@@ -4,6 +4,11 @@ import java.util.concurrent.BlockingQueue;
 
 public class MyConsumerD implements Runnable{
     public BlockingQueue<String> lQueue;
+    private boolean repeet = true;
+
+    public void finish(){
+        repeet = false;
+    }
 
     public MyConsumerD(BlockingQueue lQueue) {
         this.lQueue = lQueue;
@@ -11,7 +16,7 @@ public class MyConsumerD implements Runnable{
 
     @Override
     public void run() {
-        while (true) {
+        while (repeet) {
             while (!lQueue.isEmpty()) {
                 System.out.println(lQueue.poll());
             }
