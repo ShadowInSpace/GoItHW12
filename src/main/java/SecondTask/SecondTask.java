@@ -13,12 +13,12 @@ public class SecondTask {
      public static BlockingQueue<String> queue;
     public void fizzBuzzIt(int n) throws InterruptedException {
 
-        FizzCheker fizzCheker = new FizzCheker();
-        BuzzCheker buzzCheker = new BuzzCheker();
-        FizzBuzzCheker fizzBuzzCheker = new FizzBuzzCheker();
-        NumberCheker numberCheker = new NumberCheker();
-        MyConsumerD myConsumerD = new MyConsumerD();
-        ExecutorService executor = Executors.newFixedThreadPool(6);
+        FizzCheker fizzCheker = new FizzCheker(queue);
+        BuzzCheker buzzCheker = new BuzzCheker(queue);
+        FizzBuzzCheker fizzBuzzCheker = new FizzBuzzCheker(queue);
+        NumberCheker numberCheker = new NumberCheker(queue);
+        MyConsumerD myConsumerD = new MyConsumerD(queue);
+        ExecutorService executor = Executors.newFixedThreadPool(5);
         executor.execute(fizzCheker);
         executor.execute(buzzCheker);
         executor.execute(fizzBuzzCheker);
@@ -31,9 +31,10 @@ public class SecondTask {
             fizzBuzzCheker.setN(i);
             numberCheker.setN(i);
             while (fizzCheker.isUpdated() || buzzCheker.isUpdated() || fizzBuzzCheker.isUpdated() || numberCheker.isUpdated()){
-                Thread.sleep(100);
+                Thread.sleep(10);
             }
         }
+
 
 
 

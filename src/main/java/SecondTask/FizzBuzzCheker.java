@@ -1,8 +1,15 @@
 package SecondTask;
 
+import java.util.concurrent.BlockingQueue;
+
 public class FizzBuzzCheker implements Runnable, FizzBuzzChek {
     int n;
     boolean updated = false;
+    public BlockingQueue<String> lQueue;
+
+    public FizzBuzzCheker(BlockingQueue<String> lQueue) {
+        this.lQueue = lQueue;
+    }
 
     @Override
     public void run() {
@@ -11,8 +18,9 @@ public class FizzBuzzCheker implements Runnable, FizzBuzzChek {
                 if (updated) {
                     updated = false;
                     if (n % 3 == 0 && n % 5 == 0) {
-                        SecondTask.queue.put("fizzbuzz");
+                        lQueue.put("fizzbuzz");
                     }
+                    Thread.sleep(100);
                 }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
